@@ -1,260 +1,237 @@
-'use client'
-
-import { motion } from 'framer-motion'
-
 import { PricingTable } from '@/components/blocks/PricingTable'
 import { FeaturesCards3D } from '@/components/blocks/FeaturesCards3D'
-import { TestimonialsAnimated } from '@/components/blocks/TestimonialsAnimated'
 import { FAQAccordion } from '@/components/blocks/FAQAccordion'
-import { CTAVortex } from '@/components/blocks/CTAVortex'
-
+import { CTABanner } from '@/components/blocks/CTABanner'
 import { TracingBeam } from '@/components/ui/effects/TracingBeam'
-import { StickyScroll as StickyScrollReveal } from '@/components/ui/effects/StickyScrollReveal'
+import { AnimatedTabs } from '@/components/ui/effects/AnimatedTabs'
 
 export default function PricingPage() {
   return (
     <div className="bg-background text-foreground">
-      {/* Hero */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
-          >
-            <div className="lg:col-span-7">
-              <div className="text-sm text-muted-foreground">Pricing</div>
-              <h1 className="mt-3 font-[family-name:var(--font-heading)] text-5xl md:text-7xl leading-tight">
-                Transparent engagement options.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-sm text-muted-foreground">Pricing</p>
+              <h1 className="mt-2 font-[family-name:var(--font-heading)] text-4xl md:text-5xl">
+                Transparent structures for serious matters.
               </h1>
-              <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl">
-                Choose a structure that fits your matter’s urgency and complexity. Every engagement includes senior
-                oversight and a clear communication cadence so leadership and in-house teams can plan with confidence.
+              <p className="mt-4 text-muted-foreground">
+                We tailor pricing to scope, urgency, and risk—while keeping decision-makers informed at every stage.
+                Where possible, we recommend phased budgeting so boards and executives can approve spend at clear
+                decision points.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold"
-                >
-                  Discuss Your Matter
-                </a>
-                <a
-                  href="/practice-areas"
-                  className="inline-flex items-center justify-center rounded-md border border-border bg-card text-foreground px-6 py-3 text-sm font-semibold hover:shadow-md transition-shadow"
-                >
-                  Explore Practice Areas
-                </a>
+
+              <div className="mt-8 bg-card border border-border rounded-lg shadow-xl p-6">
+                <p className="font-[family-name:var(--font-heading)] text-lg">What you can expect</p>
+                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                  <li>Written scope and assumptions before work begins</li>
+                  <li>Budget checkpoints and change triggers for evolving matters</li>
+                  <li>Decision-ready updates designed for leadership teams</li>
+                </ul>
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="bg-card rounded-3xl shadow-md border border-border overflow-hidden">
-                <img
-                  src="/images/office.png"
-                  alt="Asymmetric gold edge band over deep navy grid"
-                  className="w-full h-80 object-cover"
-                />
-              </div>
+            <div className="bg-card border border-border rounded-lg shadow-xl overflow-hidden">
+              <img
+                src="/images/hero.png"
+                alt="Professional fee structure and matter planning documents"
+                className="w-full h-80 md:h-[28rem] object-cover"
+              />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Pricing table */}
-      <section className="py-20 md:py-32 bg-muted">
+      <section className="py-16 md:py-28 bg-muted">
         <div className="max-w-7xl mx-auto px-6">
           <PricingTable
-            headline="Engagement models"
-            subheadline="Practical options for executives, founders, and in-house teams."
+            headline="Common engagement models."
+            subheadline="Choose a structure aligned to your matter’s complexity and timeline."
             tiers={[
               {
                 name: 'Advisory Retainer',
-                price: '$7,500',
-                period: '/mo',
+                price: 'From $7,500/mo',
+                period: 'monthly',
                 features: [
-                  'Monthly strategy call',
-                  'Priority email response',
-                  'Deal/restructuring issue spotting',
-                  'Document review up to a defined cap',
+                  'Priority response window',
+                  'Contract and governance review',
+                  'Monthly risk and action summary',
+                  'Preferred rates for expanded matters',
                 ],
-                ctaLabel: 'Start Retainer',
+                ctaLabel: 'Start Advisory',
                 ctaHref: '/contact',
               },
               {
                 name: 'Transaction Sprint',
                 price: 'From $18,000',
-                period: '',
+                period: 'per transaction',
+                features: [
+                  'Diligence plan + issue tracker',
+                  'Negotiation support on key terms',
+                  'Core transaction documents',
+                  'Closing coordination checklist',
+                ],
+                ctaLabel: 'Discuss a Deal',
+                ctaHref: '/contact',
                 highlighted: true,
-                features: [
-                  'Kickoff risk map + timeline',
-                  'Diligence tracker and red-flag memo',
-                  'Negotiation support and drafting',
-                  'Weekly progress reporting',
-                ],
-                ctaLabel: 'Plan a Sprint',
-                ctaHref: '/contact',
               },
               {
-                name: 'Litigation & Investigations',
-                price: 'Hourly',
-                period: '+ budget checkpoints',
+                name: 'Defense & Investigations',
+                price: 'Custom',
+                period: 'phased',
                 features: [
-                  'Early case assessment',
-                  'Preservation + collection guidance',
-                  'Motion and negotiation strategy',
-                  'Budget checkpoints by phase',
+                  'Rapid response intake',
+                  'Privilege and document strategy',
+                  'Agency communications support',
+                  'Phased budgeting options',
                 ],
-                ctaLabel: 'Request Assessment',
+                ctaLabel: 'Request Defense Intake',
                 ctaHref: '/contact',
               },
             ]}
           />
-          <p className="mt-8 text-sm text-muted-foreground max-w-3xl leading-relaxed">
-            Pricing is indicative and varies by complexity, timeline, and scope. We confirm fees in a written engagement
-            letter after intake and a conflict check.
-          </p>
         </div>
       </section>
 
-      {/* What’s included (3D cards) */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <FeaturesCards3D
-            badge="Every engagement"
-            headline="What’s included in every engagement"
-            subheadline="Senior-led, documentation-driven, and built to reduce surprises."
-            features={[
-              {
-                title: 'Partner-led strategy',
-                description: 'Direct access to senior counsel; no opaque handoffs.',
-                icon: 'Crown',
-              },
-              {
-                title: 'Decision-ready updates',
-                description: 'Clear options, risks, and recommended next steps—written for executives.',
-                icon: 'ClipboardCheck',
-              },
-              {
-                title: 'Defensible documentation',
-                description: 'A record that supports your position in negotiations, audits, or litigation.',
-                icon: 'FileText',
-              },
-              {
-                title: 'Confidentiality-first workflow',
-                description: 'Secure communications practices and careful intake boundaries.',
-                icon: 'Lock',
-              },
-            ]}
-          />
-        </div>
-      </section>
-
-      {/* Process clarity (Sticky reveal) */}
-      <section className="py-20 md:py-32 bg-muted">
-        <div className="max-w-7xl mx-auto px-6">
-          <StickyScrollReveal
-            content={[
-              {
-                title: 'Scope definition',
-                description:
-                  'We define the decision you need to make, the timeline, and the workstreams required—then document assumptions and exclusions.',
-              },
-              {
-                title: 'Budget checkpoints',
-                description:
-                  'We set phase milestones and check in before the work changes. If the facts shift, you hear it early—not after the invoice.',
-              },
-              {
-                title: 'Executive-ready reporting',
-                description:
-                  'You receive concise updates focused on options, risk, and next steps—written to support leadership and board communication.',
-              },
-              {
-                title: 'Closeout documentation',
-                description:
-                  'We memorialize outcomes and deliver a clean record: what was decided, why, and what to monitor going forward.',
-              },
-            ]}
-          />
-        </div>
-      </section>
-
-      {/* Testimonials (TracingBeam wrapper) */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <TracingBeam>
-            <TestimonialsAnimated
-              headline="Budget clarity, not budget surprises."
-              subheadline="How clients describe our communication and predictability."
-              testimonials={[
-                {
-                  quote:
-                    'They set expectations early and updated us before anything changed. That made the board comfortable.',
-                  name: 'Board Chair',
-                  role: 'Private equity portfolio company',
-                  company: 'Confidential',
-                  imageUrl: '/images/team-1.png',
-                },
-                {
-                  quote: 'Every phase had a plan, a budget, and a rationale. We always knew where we stood.',
-                  name: 'VP, Legal',
-                  role: 'Healthcare services',
-                  company: 'Confidential',
-                  imageUrl: '/images/team-2.png',
-                },
-                {
-                  quote: 'Direct, candid advice—without drama. Exactly what we needed.',
-                  name: 'Founder',
-                  role: 'Technology company',
-                  company: 'Confidential',
-                  imageUrl: '/images/team-3.png',
-                },
-              ]}
-            />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+              <div>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl">
+                  Phased budgeting (recommended for complex matters).
+                </h2>
+                <p className="mt-4 text-muted-foreground">
+                  Complex matters rarely move in a straight line. Phasing creates decision points so leadership can
+                  approve spend as facts develop—without losing momentum when timelines compress.
+                </p>
+
+                <div className="mt-8 bg-card border border-border rounded-lg shadow-xl p-6">
+                  <p className="font-[family-name:var(--font-heading)] text-lg">Budget control, not friction</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    We set thresholds and trigger approvals before expanding scope. That keeps matters predictable and
+                    avoids surprises—especially in investigations and disputes.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                <AnimatedTabs
+                  tabs={[
+                    {
+                      title: 'Phase-based',
+                      value: 'phase-based',
+                      content: (
+                        <div className="space-y-4">
+                          {[
+                            { title: 'Phase 1: Assessment', description: 'Fact gathering, timeline mapping, and strategy memo.' },
+                            {
+                              title: 'Phase 2: Execution',
+                              description: 'Negotiations, filings, motion practice, or investigation workstreams.',
+                            },
+                            {
+                              title: 'Phase 3: Resolution',
+                              description: 'Closing, settlement, remediation, and governance hardening.',
+                            },
+                          ].map((p) => (
+                            <div key={p.title} className="border border-border rounded-lg p-4">
+                              <p className="font-[family-name:var(--font-heading)]">{p.title}</p>
+                              <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      ),
+                    },
+                    {
+                      title: 'Hourly',
+                      value: 'hourly',
+                      content: (
+                        <div className="space-y-4">
+                          {[
+                            {
+                              title: 'Hourly billing',
+                              description:
+                                'Appropriate for evolving scopes, with weekly updates and budget checkpoints.',
+                            },
+                            {
+                              title: 'Budget checkpoints',
+                              description:
+                                'We set thresholds and trigger approvals before expanding scope.',
+                            },
+                          ].map((p) => (
+                            <div key={p.title} className="border border-border rounded-lg p-4">
+                              <p className="font-[family-name:var(--font-heading)]">{p.title}</p>
+                              <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      ),
+                    },
+                  ]}
+                />
+              </div>
+            </div>
           </TracingBeam>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 md:py-32 bg-muted">
+      <section className="py-16 md:py-28 bg-muted">
         <div className="max-w-7xl mx-auto px-6">
-          <FAQAccordion
-            headline="Pricing FAQs"
-            subheadline="A few details that help you choose the right model."
-            items={[
+          <FeaturesCards3D
+            badge="Value"
+            headline="What pricing includes."
+            subheadline="No surprises—just structured execution and clear communication."
+            features={[
               {
-                question: 'Can you provide a budget range before engagement?',
-                answer:
-                  'Yes. After a short intake call, we can provide a phase-based estimate and identify cost drivers and decision gates so you can plan internally.',
+                title: 'Partner-led oversight',
+                description: 'Senior attention on strategy, negotiation posture, and key deliverables.',
               },
               {
-                question: 'Do you offer capped fees?',
-                answer:
-                  'For defined scopes, we can propose capped or phased caps. For open-ended litigation, we use milestone budgeting and checkpoints to keep you informed.',
+                title: 'Decision-ready updates',
+                description: 'Concise summaries that translate legal complexity into actions.',
               },
               {
-                question: 'What payment methods do you accept?',
-                answer:
-                  'ACH and major credit cards. Retainers are typically paid upfront prior to commencing work, subject to the engagement letter terms.',
+                title: 'Risk documentation',
+                description: 'Written rationale for key choices to support governance and defensibility.',
               },
             ]}
           />
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <CTAVortex
-            headline="Get a scope and budget in one call."
-            description="We’ll clarify your objectives, identify the fastest path, and propose an engagement structure."
-            ctaLabel="Book Consultation"
-            ctaHref="/contact"
+          <FAQAccordion
+            headline="Pricing FAQs."
+            subheadline="How we keep matters predictable."
+            items={[
+              {
+                question: 'Can you cap fees?',
+                answer:
+                  'Yes—when scope is defined or can be phased. We’ll propose caps per phase with clear assumptions and change triggers so leadership can approve spend with confidence.',
+              },
+              {
+                question: 'Do you offer success fees?',
+                answer:
+                  'In select transaction contexts, we can discuss hybrid structures. Defense matters are typically not suitable for success fees given ethical and practical constraints.',
+              },
+              {
+                question: 'How do you handle urgent weekend work?',
+                answer:
+                  'We can staff urgent matters quickly; any premium rates or special arrangements are confirmed in writing before work begins. We also align on a short action plan to avoid unnecessary churn.',
+              },
+            ]}
           />
         </div>
       </section>
+
+      <CTABanner
+        headline="Get a fee estimate aligned to your timeline."
+        description="Share scope, deadlines, and decision-makers. We’ll propose a structure that keeps the matter controlled."
+        ctaLabel="Get a Fee Estimate"
+        ctaHref="/contact"
+      />
     </div>
   )
 }

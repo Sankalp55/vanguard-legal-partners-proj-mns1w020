@@ -1,381 +1,348 @@
-'use client'
-
-import { motion } from 'framer-motion'
-
 import { HeroGradientBlob } from '@/components/blocks/HeroGradientBlob'
-import { StatsCounter } from '@/components/blocks/StatsCounter'
+import { FeaturesGrid } from '@/components/blocks/FeaturesGrid'
 import { TeamGrid } from '@/components/blocks/TeamGrid'
+import { StatsCounter } from '@/components/blocks/StatsCounter'
 import { TestimonialsAnimated } from '@/components/blocks/TestimonialsAnimated'
 import { ContactForm } from '@/components/blocks/ContactForm'
-import { CTAVortex } from '@/components/blocks/CTAVortex'
-
-import { BentoGrid, BentoGridItem } from '@/components/ui/effects/BentoGrid'
+import { CTABanner } from '@/components/blocks/CTABanner'
 import { StickyScroll as StickyScrollReveal } from '@/components/ui/effects/StickyScrollReveal'
 import { TracingBeam } from '@/components/ui/effects/TracingBeam'
+import { ParallaxScroll } from '@/components/ui/effects/ParallaxScroll'
 
 export default function HomePage() {
   return (
     <div className="bg-background text-foreground">
       <HeroGradientBlob
         badge="Chicago Corporate Counsel"
-        headline="Authoritative counsel for boardroom decisions and courtroom pressure."
-        subheadline="Vanguard Legal Partners is a Chicago corporate law firm guiding executives through mergers & acquisitions, restructuring, securities litigation, and white-collar defense—discreetly, decisively, and with trial-ready rigor."
+        headline="Vanguard counsel for boardroom-critical moments."
+        subheadline="Chicago corporate law firm advising executives, funds, and founders through M&A, restructuring, securities litigation, and white-collar defense—with disciplined strategy and courtroom readiness."
         primaryCta={{ label: 'Request a Consultation', href: '/contact' }}
         secondaryCta={{ label: 'Explore Practice Areas', href: '/practice-areas' }}
       />
 
-      {/* Trust + quick context */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
-          >
-            <div className="lg:col-span-7">
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl leading-tight">
-                Corporate risk moves fast. Your counsel should, too.
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                We advise leadership teams when timing, optics, and documentation matter. Whether you are negotiating
-                a change-of-control transaction, stabilizing a distressed balance sheet, responding to an investigation,
-                or defending securities-related claims, our work is structured for executive decision-making: clear
-                options, defined decision gates, and a record that holds up under scrutiny.
-              </p>
-
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {[
-                  { title: 'Chicago-based counsel', desc: 'Local presence with national reach for complex matters.' },
-                  { title: 'Trial-ready strategy', desc: 'Negotiation posture informed by litigation reality.' },
-                  { title: 'Executive confidentiality', desc: 'Disciplined intake and need-to-know workflows.' },
-                ].map((b) => (
-                  <div
-                    key={b.title}
-                    className="bg-card text-card-foreground rounded-3xl shadow-md border border-border p-5"
-                  >
-                    <div className="font-[family-name:var(--font-heading)] text-lg">{b.title}</div>
-                    <div className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.desc}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div className="bg-card rounded-3xl shadow-md border border-border overflow-hidden">
-                <img
-                  src="/images/office.png"
-                  alt="Abstract architectural lines in deep navy with gold accents"
-                  className="w-full h-72 object-cover"
-                />
-                <div className="p-6">
-                  <div className="font-[family-name:var(--font-heading)] text-xl">Discreet. Decisive. Documented.</div>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">
-                    Our approach is built for high-sensitivity environments: board updates, regulator-facing timelines,
-                    tight deal windows, and matters where a misstep becomes a headline.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Practice areas (bento) */}
-      <section className="py-20 md:py-32 bg-muted">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-end justify-between gap-6 flex-col md:flex-row"
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
-              <div className="text-sm text-muted-foreground">Focused practice</div>
-              <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl md:text-4xl">
-                Focused practice. Comprehensive coverage.
-              </h2>
-              <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-                Four core disciplines built for complex corporate risk—structured to move fast when timing matters.
-                Each engagement is partner-led and designed to produce decision-ready guidance.
+              <p className="text-muted-foreground">
+                When timelines compress and exposure rises, executives need counsel that is both transactional and
+                litigation-aware. We run lean teams, lead with partners, and build a defensible record—so decisions can
+                be made quickly, communicated clearly, and sustained under scrutiny.
               </p>
-            </div>
-          </motion.div>
 
-          <div className="mt-10">
-            <BentoGrid className="mx-auto">
-              <BentoGridItem
-                title="Mergers & Acquisitions"
-                description="Deal strategy, diligence, negotiation, and closing—built to protect value and control risk."
-              />
-              <BentoGridItem
-                title="Corporate Restructuring"
-                description="Stabilize operations, renegotiate obligations, and navigate distressed transactions with clarity."
-              />
-              <BentoGridItem
-                title="Securities Litigation"
-                description="Defense of securities claims, internal investigations, and regulator-facing response playbooks."
-              />
-              <BentoGridItem
-                title="White-Collar Defense"
-                description="Crisis counsel for executives and companies—discreet, disciplined, and court-tested."
-              />
-            </BentoGrid>
-
-            <div className="mt-8 bg-card text-card-foreground rounded-3xl shadow-md border border-border overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="p-8">
-                  <h3 className="font-[family-name:var(--font-heading)] text-2xl">A workflow you can rely on</h3>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">
-                    We run matters with a consistent cadence: assess the facts, map risk and leverage, execute against a
-                    timeline, and document the rationale. That structure reduces surprises and keeps leadership aligned.
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl p-5">
+                  <p className="font-[family-name:var(--font-heading)] text-lg">Partner-led, end-to-end</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    No handoffs. The partner you meet is the partner driving strategy, negotiation posture, and key
+                    deliverables.
                   </p>
-                  <div className="mt-6">
-                    <a
-                      href="/practice-areas"
-                      className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-sm font-semibold"
-                    >
-                      View all practice areas
-                    </a>
-                  </div>
                 </div>
-                <div className="p-8">
-                  <img
-                    src="/images/meeting.png"
-                    alt="Abstract courthouse stone texture with subtle grid"
-                    className="w-full h-64 object-cover rounded-3xl shadow-md"
-                  />
+                <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl p-5">
+                  <p className="font-[family-name:var(--font-heading)] text-lg">Decision-ready communication</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Clear options, risks, and next steps—written and structured for boards, committees, and in-house
+                    teams.
+                  </p>
                 </div>
+              </div>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg shadow-xl overflow-hidden">
+              <img
+                src="/images/hero.png"
+                alt="Chicago corporate counsel in a modern boardroom setting"
+                className="w-full h-72 md:h-96 object-cover"
+              />
+              <div className="p-6">
+                <p className="font-[family-name:var(--font-heading)] text-xl">Built for high-stakes moments</p>
+                <p className="mt-2 text-muted-foreground">
+                  We advise on transactions and disputes where the outcome affects enterprise value, executive exposure,
+                  and reputation. Our approach is conservative, structured, and fast—without shortcuts.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How we work (sticky reveal) */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28 bg-muted">
         <div className="max-w-7xl mx-auto px-6">
           <StickyScrollReveal
             content={[
               {
-                title: 'Rapid intake',
+                title: 'Mergers & Acquisitions',
                 description:
-                  'We define objectives, constraints, and timelines, then establish a confidentiality-first communication cadence suitable for executives and in-house teams.',
+                  'Deal strategy, diligence, negotiation, and closing support for strategic buyers, PE sponsors, and founder-led exits. We focus on risk allocation that holds up after close—because the record matters.',
+                content: (
+                  <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">Typical work</p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      <li>LOIs • Purchase Agreements • Disclosure Schedules • Closing Checklists</li>
+                      <li>Reps & warranties strategy and indemnity structure</li>
+                      <li>Management rollovers and equity incentive alignment</li>
+                    </ul>
+                  </div>
+                ),
               },
               {
-                title: 'Risk map',
+                title: 'Corporate Restructuring',
                 description:
-                  'We identify exposures, leverage points, and decision gates—aligning legal posture with business priorities and stakeholder realities.',
+                  'Stabilize operations, protect enterprise value, and navigate creditor dynamics with a litigation-aware posture. We document decisions to preserve leverage and reduce future disputes.',
+                content: (
+                  <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">Typical work</p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      <li>Workouts • Forbearance • Governance • Distressed M&A</li>
+                      <li>Covenant strategy and amendment documentation</li>
+                      <li>Stakeholder mapping and negotiation cadence</li>
+                    </ul>
+                  </div>
+                ),
               },
               {
-                title: 'Execution plan',
+                title: 'Securities Litigation',
                 description:
-                  'We assign workstreams, draft strategy, and build a defensible document trail that supports negotiations, disclosures, and litigation posture.',
+                  'Defense for issuers, officers, and financial institutions in high-stakes investigations and civil claims. We prioritize early leverage, clean narratives, and disciplined discovery.',
+                content: (
+                  <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">Typical work</p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      <li>10b-5 • Derivative Actions • Internal Investigations</li>
+                      <li>Motion practice strategy and discovery containment</li>
+                      <li>Regulatory response management and remediation planning</li>
+                    </ul>
+                  </div>
+                ),
               },
               {
-                title: 'Outcome management',
+                title: 'White-Collar Defense',
                 description:
-                  'We negotiate, litigate, or resolve—then memorialize the outcome and operationalize next steps to reduce recurrence risk.',
+                  'Crisis response and defense strategy for executives and companies facing enforcement and criminal exposure. We move quickly, protect privilege, and control messaging.',
+                content: (
+                  <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">Typical work</p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      <li>DOJ • SEC • State AG • Parallel Proceedings</li>
+                      <li>Privilege protocols, witness prep, and interview defense</li>
+                      <li>Agency negotiation and resolution strategy</li>
+                    </ul>
+                  </div>
+                ),
               },
             ]}
           />
         </div>
       </section>
 
-      {/* Case results stats */}
-      <section className="py-20 md:py-32 bg-muted">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
-          >
-            <div className="lg:col-span-5">
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl">
-                Results framed by discretion.
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Representative outcomes and performance signals—shared with respect for confidentiality and client
-                sensitivity. We focus on leverage, documentation, and decision speed so leadership can act with control.
-              </p>
-              <div className="mt-8 bg-card rounded-3xl shadow-md border border-border overflow-hidden">
-                <img
-                  src="/images/handshake.png"
-                  alt="Chicago skyline abstraction in deep navy"
-                  className="w-full h-56 object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div className="bg-card text-card-foreground rounded-3xl shadow-md border border-border p-8">
-                <StatsCounter
-                  stats={[
-                    { label: 'Deal value advised', value: 2.4, suffix: 'B+' },
-                    { label: 'Matters resolved pre-trial', value: 70, suffix: '%+' },
-                    { label: 'Average response time', value: 24, suffix: 'h' },
-                    { label: 'Industries served', value: 15, suffix: '+' },
-                  ]}
-                />
-                <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
-                  These figures are representative and aggregated. Matters vary by jurisdiction, posture, and client
-                  objectives; we discuss realistic expectations during intake.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Attorneys (team grid) */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <TeamGrid
-            headline="Senior-led representation—no handoffs."
-            subheadline="Your matter is led by partners who have negotiated, litigated, and advised through high-visibility outcomes."
-            members={[
+          <FeaturesGrid
+            badge="Practice Areas"
+            headline="Focused practice. Full-spectrum execution."
+            subheadline="Four core disciplines built for complex transactions and high-exposure disputes. We bring disciplined process, senior attention, and documentation that anticipates scrutiny."
+            features={[
               {
-                name: 'Evelyn Hart, J.D.',
-                role: 'Managing Partner • M&A + Securities',
-                bio: 'Leads complex transactions and board advisory with a litigation-informed risk lens.',
-                imageUrl: '/images/team-1.png',
+                title: 'Mergers & Acquisitions',
+                description:
+                  'Deal strategy, diligence design, negotiation leadership, and closing coordination for buyers, sponsors, and founder-led exits.',
+                icon: 'Briefcase',
               },
               {
-                name: 'Marcus Delaney, J.D.',
-                role: 'Partner • Restructuring',
-                bio: 'Counsels companies and creditors through distressed transactions and operational turnarounds.',
-                imageUrl: '/images/team-2.png',
+                title: 'Corporate Restructuring',
+                description:
+                  'Workouts, forbearance, governance guidance, and distressed transactions—executed with a dispute-ready posture.',
+                icon: 'Shield',
               },
               {
-                name: 'Nina Patel, J.D.',
-                role: 'Partner • White-Collar Defense',
-                bio: 'Crisis response, investigations, and defense strategy for executives and regulated entities.',
-                imageUrl: '/images/team-3.png',
+                title: 'Securities Litigation',
+                description:
+                  'Defense for issuers and executives in investigations and civil claims, with early case assessment and precision discovery.',
+                icon: 'Scale',
+              },
+              {
+                title: 'White-Collar Defense',
+                description:
+                  'Rapid response for subpoenas and enforcement exposure, built around privilege strategy, narrative control, and operational continuity.',
+                icon: 'Gavel',
               },
             ]}
           />
-
-          <div className="mt-10">
-            <a
-              href="/about#attorneys"
-              className="inline-flex items-center justify-center rounded-md border border-border bg-card text-foreground px-5 py-3 text-sm font-semibold hover:shadow-md transition-shadow"
-            >
-              Meet the team
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* Testimonials (wrapped with tracing beam) */}
-      <section className="py-20 md:py-32 bg-muted">
+      <section className="py-16 md:py-28 bg-muted">
         <div className="max-w-7xl mx-auto px-6">
           <TracingBeam>
-            <div className="space-y-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
               <div>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl">
-                  Trusted by leaders when the stakes rise.
+                <p className="text-sm text-muted-foreground">Measured outcomes</p>
+                <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl md:text-4xl">
+                  Measured outcomes. Documented impact.
                 </h2>
-                <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-                  Executive feedback focused on clarity, speed, and control under pressure. We aim to reduce uncertainty
-                  and increase leverage—without theatrics.
+                <p className="mt-4 text-muted-foreground">
+                  Representative capabilities and results—tailored to each matter’s facts and risk profile. We focus on
+                  the decisions that move outcomes, and we document the rationale so boards and executives can act with
+                  confidence.
                 </p>
+
+                <div className="mt-8 bg-card border border-border rounded-lg shadow-xl p-6">
+                  <p className="font-[family-name:var(--font-heading)] text-lg">Responsiveness matters</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    For urgent intake, we aim to respond within one business day—often within 24 hours—so you can
+                    stabilize timelines, stakeholders, and messaging early.
+                  </p>
+                </div>
               </div>
 
-              <TestimonialsAnimated
-                headline="Client feedback"
-                subheadline="Representative comments from executives and in-house leaders."
-                testimonials={[
-                  {
-                    quote:
-                      'Vanguard gave us a precise risk map, negotiated firmly, and kept the process moving without surprises.',
-                    name: 'General Counsel',
-                    role: 'Mid-market manufacturing company',
-                    company: 'Confidential',
-                    imageUrl: '/images/team-1.png',
-                  },
-                  {
-                    quote:
-                      'They were calm, strategic, and trial-ready. That posture changed the entire trajectory of our dispute.',
-                    name: 'CEO',
-                    role: 'Publicly traded services firm',
-                    company: 'Confidential',
-                    imageUrl: '/images/team-2.png',
-                  },
-                  {
-                    quote:
-                      'When we needed an immediate response, they built a plan in hours—not days—and executed it.',
-                    name: 'Chief Compliance Officer',
-                    role: 'Financial services',
-                    company: 'Confidential',
-                    imageUrl: '/images/team-3.png',
-                  },
-                ]}
-              />
+              <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                <StatsCounter
+                  stats={[
+                    { label: 'Transaction value advised', value: 3.2, suffix: 'B+' },
+                    { label: 'Restructuring matters supported', value: 140, suffix: '+' },
+                    { label: 'Investigations managed', value: 80, suffix: '+' },
+                    { label: 'Average response time', value: 24, suffix: 'h' },
+                  ]}
+                />
+                <p className="mt-4 text-xs text-muted-foreground">
+                  Figures reflect aggregate experience across representative matters and workstreams; outcomes depend on
+                  specific facts and applicable law.
+                </p>
+              </div>
             </div>
           </TracingBeam>
         </div>
       </section>
 
-      {/* Contact */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"
-          >
-            <div className="lg:col-span-5">
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl">
-                Request a confidential consultation.
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Tell us what’s happening. We’ll respond promptly and outline next steps. If your matter is urgent, call
-                directly and we’ll route you to the right partner.
+          <TeamGrid
+            headline="Senior-led representation—no handoffs."
+            subheadline="Every matter is partner-driven, with lean teams and direct access. We combine transactional fluency with a litigation-ready posture to protect outcomes after the decision is made."
+            members={[
+              {
+                name: 'Evelyn Hart, J.D.',
+                role: 'Managing Partner • M&A',
+                bio: 'Leads complex acquisitions and cross-border transactions with a governance-first approach and disciplined risk allocation.',
+                imageUrl: '/images/team-1.png',
+              },
+              {
+                name: 'Marcus Lin, J.D.',
+                role: 'Partner • Restructuring',
+                bio: 'Advises companies and stakeholders through workouts, recapitalizations, and distressed transactions.',
+                imageUrl: '/images/team-2.png',
+              },
+              {
+                name: 'Nadia Reyes, J.D.',
+                role: 'Partner • Securities Litigation',
+                bio: 'Defends issuers and executives in securities claims and investigations with early motion practice and precision discovery.',
+                imageUrl: '/images/team-3.png',
+              },
+            ]}
+          />
+          <div className="mt-10 bg-card border border-border rounded-lg shadow-xl p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <p className="font-[family-name:var(--font-heading)] text-xl">A lean team with courtroom discipline</p>
+                <p className="mt-2 text-muted-foreground">
+                  We staff matters to match the risk. That means fewer layers, faster answers, and documents drafted as
+                  if they will be read by a regulator or judge—because sometimes they will be.
+                </p>
+              </div>
+              <img
+                src="/images/office.png"
+                alt="Professional legal team collaborating on strategy"
+                className="w-full h-56 object-cover rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-28 bg-muted">
+        <div className="max-w-7xl mx-auto px-6">
+          <TestimonialsAnimated
+            headline="Trusted by leaders who can’t afford ambiguity."
+            subheadline="What clients value most: clarity, speed, and control under pressure."
+            testimonials={[
+              {
+                quote:
+                  'They were decisive, practical, and always two steps ahead in negotiations. We closed on schedule despite major late-stage issues.',
+                name: 'General Counsel',
+                role: 'Mid-market manufacturing company',
+                company: 'Confidential',
+                imageUrl: '/images/team-1.png',
+              },
+              {
+                quote:
+                  'In a high-exposure investigation, they managed risk and messaging with precision. Their calm, structured approach was invaluable.',
+                name: 'Chief Executive Officer',
+                role: 'Financial services firm',
+                company: 'Confidential',
+                imageUrl: '/images/team-2.png',
+              },
+              {
+                quote:
+                  'They brought courtroom discipline to every document. That posture changed the leverage dynamics immediately.',
+                name: 'Board Member',
+                role: 'Healthcare services group',
+                company: 'Confidential',
+                imageUrl: '/images/team-3.png',
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      <section className="py-16 md:py-28">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+              <p className="font-[family-name:var(--font-heading)] text-2xl">A discreet environment for serious matters</p>
+              <p className="mt-3 text-muted-foreground">
+                If you’re facing a compressed deal timeline, a creditor escalation, a subpoena, or a board-level dispute,
+                we can help you triage exposure and define next actions quickly. Please do not include sensitive personal
+                information in your message.
               </p>
 
-              <div className="mt-8 bg-card rounded-3xl shadow-md border border-border overflow-hidden">
-                <img
-                  src="/images/team-1.png"
-                  alt="Abstract gold-and-navy texture suggesting discretion and authority"
-                  className="w-full h-56 object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div className="bg-card text-card-foreground rounded-3xl shadow-md border border-border p-8">
-                <ContactForm
-                  headline="Consultation request"
-                  subheadline="Do not include sensitive personal information. Submitting this form does not create an attorney-client relationship."
-                  contactInfo={[
-                    { label: 'Phone', value: '(312) 555-0148' },
-                    { label: 'Email', value: 'intake@vanguardlegalpartners.com' },
-                    { label: 'Address', value: '200 W Madison St, Suite 2100, Chicago, IL' },
+              <div className="mt-6">
+                <ParallaxScroll
+                  images={[
+                    '/images/meeting.png',
+                    '/images/handshake.png',
+                    '/images/team-1.png',
+                    '/images/team-2.png',
                   ]}
                 />
               </div>
             </div>
-          </motion.div>
+
+            <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+              <ContactForm
+                headline="Request a confidential consultation."
+                subheadline="Share a brief overview. We’ll respond within one business day—often sooner."
+                contactInfo={[
+                  { label: 'Office', value: 'Chicago, IL' },
+                  { label: 'Email', value: 'intake@vanguardlegalpartners.com' },
+                  { label: 'Phone', value: '(312) 555-0147' },
+                  { label: 'Hours', value: 'Mon–Fri, 8:30am–6:00pm CT' },
+                ]}
+              />
+              <p className="mt-4 text-xs text-muted-foreground">
+                Contacting the firm does not create an attorney-client relationship. Do not send confidential
+                information until an engagement agreement is signed.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <CTAVortex
-            headline="Need counsel that’s decisive under pressure?"
-            description="We’ll help you move from uncertainty to a clear plan—with documentation that holds up."
-            ctaLabel="Request a Consultation"
-            ctaHref="/contact"
-          />
-        </div>
-      </section>
+      <CTABanner
+        headline="If the stakes are high, the plan must be clear."
+        description="Tell us what you’re facing. We’ll outline options, decision points, and next steps—without noise."
+        ctaLabel="Request a Consultation"
+        ctaHref="/contact"
+      />
     </div>
   )
 }

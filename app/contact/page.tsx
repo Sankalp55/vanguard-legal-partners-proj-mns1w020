@@ -1,176 +1,151 @@
-'use client'
-
-import { motion } from 'framer-motion'
-
 import { ContactForm } from '@/components/blocks/ContactForm'
+import { FeaturesGrid } from '@/components/blocks/FeaturesGrid'
 import { FAQAccordion } from '@/components/blocks/FAQAccordion'
-import { CTAVortex } from '@/components/blocks/CTAVortex'
-
-import { StickyScroll as StickyScrollReveal } from '@/components/ui/effects/StickyScrollReveal'
+import { CTABanner } from '@/components/blocks/CTABanner'
 import { TracingBeam } from '@/components/ui/effects/TracingBeam'
+import { ParallaxScroll } from '@/components/ui/effects/ParallaxScroll'
 
 export default function ContactPage() {
   return (
     <div className="bg-background text-foreground">
-      {/* Hero */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
-          >
-            <div className="lg:col-span-7">
-              <div className="text-sm text-muted-foreground">Contact</div>
-              <h1 className="mt-3 font-[family-name:var(--font-heading)] text-5xl md:text-7xl leading-tight">
-                Confidential intake. Prompt response.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-sm text-muted-foreground">Contact</p>
+              <h1 className="mt-2 font-[family-name:var(--font-heading)] text-4xl md:text-5xl">
+                Contact Vanguard Legal Partners.
               </h1>
-              <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl">
-                Send a request and we’ll follow up to schedule a consultation. For urgent matters, call directly. We
-                maintain careful intake boundaries and will guide you on what to share safely.
+              <p className="mt-4 text-muted-foreground">
+                Confidential intake for corporate transactions, disputes, and investigations. We respond within one
+                business day. If you are facing an urgent deadline, include it in your message and consider calling the
+                office.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <a
-                  href="tel:+13125550148"
-                  className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold"
-                >
-                  Call (312) 555-0148
-                </a>
-                <a
-                  href="/practice-areas"
-                  className="inline-flex items-center justify-center rounded-md border border-border bg-card text-foreground px-6 py-3 text-sm font-semibold hover:shadow-md transition-shadow"
-                >
-                  View Practice Areas
-                </a>
+
+              <div className="mt-8 bg-card border border-border rounded-lg shadow-xl p-6">
+                <p className="font-[family-name:var(--font-heading)] text-lg">Important note</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Contacting the firm does not create an attorney-client relationship. Please do not send confidential
+                  information until an engagement agreement is signed.
+                </p>
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="bg-card rounded-3xl shadow-md border border-border overflow-hidden">
-                <img
-                  src="/images/office.png"
-                  alt="Abstract Chicago grid linework with a gold pin accent"
-                  className="w-full h-80 object-cover"
-                />
-              </div>
+            <div className="bg-card border border-border rounded-lg shadow-xl overflow-hidden">
+              <img
+                src="/images/hero.png"
+                alt="Confidential consultation setting"
+                className="w-full h-80 md:h-[28rem] object-cover"
+              />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Contact form */}
-      <section className="py-20 md:py-32 bg-muted">
+      <section id="contact-form" className="py-16 md:py-28 bg-muted">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"
-          >
-            <div className="lg:col-span-5">
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl">Send a consultation request</h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                We’ll confirm receipt and propose times. This is a client-side form submission only. Do not send
-                confidential or time-sensitive information through this form.
-              </p>
-
-              <div className="mt-8 bg-card rounded-3xl shadow-md border border-border overflow-hidden">
-                <img
-                  src="/images/meeting.png"
-                  alt="Abstract office corridor suggesting discretion"
-                  className="w-full h-56 object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div className="bg-card text-card-foreground rounded-3xl shadow-md border border-border p-8">
+          <TracingBeam>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+              <div className="bg-card border border-border rounded-lg shadow-xl p-6">
                 <ContactForm
-                  headline="Consultation request"
-                  subheadline="Do not send confidential or time-sensitive information through this form. Submitting does not create an attorney-client relationship."
+                  headline="Start here."
+                  subheadline="Provide a high-level overview. Do not include sensitive personal information in the message field."
                   contactInfo={[
-                    { label: 'Phone', value: '(312) 555-0148' },
+                    { label: 'Office', value: 'Chicago, IL' },
                     { label: 'Email', value: 'intake@vanguardlegalpartners.com' },
-                    { label: 'Address', value: '200 W Madison St, Suite 2100, Chicago, IL' },
+                    { label: 'Phone', value: '(312) 555-0147' },
+                    { label: 'Hours', value: 'Mon–Fri, 8:30am–6:00pm CT' },
                   ]}
                 />
+                <p className="mt-4 text-xs text-muted-foreground">
+                  If you need to share sensitive materials, we will coordinate a secure method after conflicts are
+                  cleared.
+                </p>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                <p className="font-[family-name:var(--font-heading)] text-2xl">A clear, conservative intake process</p>
+                <p className="mt-3 text-muted-foreground">
+                  We keep intake structured so you can move quickly without over-sharing before conflicts are cleared.
+                  Expect a short consult focused on objectives, deadlines, stakeholders, and immediate risk controls.
+                </p>
+
+                <div className="mt-6">
+                  <ParallaxScroll
+                    images={[
+                      '/images/office.png',
+                      '/images/meeting.png',
+                      '/images/handshake.png',
+                      '/images/team-1.png',
+                    ]}
+                  />
+                </div>
               </div>
             </div>
-          </motion.div>
+          </TracingBeam>
         </div>
       </section>
 
-      {/* What happens next (StickyScrollReveal) */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <StickyScrollReveal
-            content={[
-              {
-                title: 'Confirmation',
-                description: 'We confirm receipt and clarify the best contact method.',
-              },
+          <FeaturesGrid
+            badge="Next steps"
+            headline="What happens next."
+            subheadline="A clear, conservative intake process."
+            features={[
               {
                 title: 'Conflict check',
-                description: 'We run a standard conflict check before substantive discussion.',
+                description: 'We confirm we can act before discussing confidential details.',
               },
               {
-                title: 'Consultation',
-                description:
-                  'We review facts, objectives, and decision gates; you receive a recommended plan and next steps.',
+                title: 'Partner consult',
+                description: 'A partner reviews facts, objectives, and constraints.',
               },
               {
-                title: 'Engagement',
-                description:
-                  'If aligned, we finalize scope and fees in writing and begin work with a clear communication cadence.',
+                title: 'Scope & fee proposal',
+                description: 'You receive a written scope with pricing structure options.',
+              },
+              {
+                title: 'Immediate next steps',
+                description: 'If urgent, we align on a 48-hour action plan.',
               },
             ]}
           />
         </div>
       </section>
 
-      {/* FAQ (TracingBeam wrapper) */}
-      <section className="py-20 md:py-32 bg-muted">
+      <section className="py-16 md:py-28 bg-muted">
         <div className="max-w-7xl mx-auto px-6">
-          <TracingBeam>
-            <FAQAccordion
-              headline="Contact FAQs"
-              subheadline="Quick answers before you reach out."
-              items={[
-                {
-                  question: 'Do you offer emergency consultations?',
-                  answer:
-                    'Yes. If your matter is time-sensitive, call directly and we’ll prioritize a rapid intake, subject to conflicts and availability.',
-                },
-                {
-                  question: 'Can you sign an NDA before details?',
-                  answer:
-                    'We can discuss confidentiality needs during intake. Formal NDAs may be considered depending on context, conflicts, and the nature of the requested information.',
-                },
-                {
-                  question: 'Where are you located?',
-                  answer:
-                    'We’re based in Chicago and work with clients across the U.S. and internationally depending on matter requirements and jurisdictional considerations.',
-                },
-              ]}
-            />
-          </TracingBeam>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <CTAVortex
-            headline="Prefer to speak now?"
-            description="Call and we’ll route you to the right partner."
-            ctaLabel="Call (312) 555-0148"
-            ctaHref="tel:+13125550148"
+          <FAQAccordion
+            headline="Contact FAQs."
+            subheadline="Quick guidance before you reach out."
+            items={[
+              {
+                question: 'Do you offer same-day consultations?',
+                answer:
+                  'When schedules allow, yes—especially for urgent transactions, subpoenas, or investigative requests. If you have a hard deadline, call the office and include it in your message.',
+              },
+              {
+                question: 'Do you work outside Illinois?',
+                answer:
+                  'We can support multi-jurisdictional matters, often coordinating with local counsel where required. We will confirm licensing and engagement structure during intake.',
+              },
+              {
+                question: 'Can you sign an NDA before an initial call?',
+                answer:
+                  'In many cases, yes. We’ll confirm conflicts first and then coordinate an NDA if appropriate for the matter.',
+              },
+            ]}
           />
         </div>
       </section>
+
+      <CTABanner
+        headline="Important notice."
+        description="Contacting the firm does not create an attorney-client relationship. Please do not send confidential information until an engagement agreement is signed."
+        ctaLabel="Review Practice Areas"
+        ctaHref="/practice-areas"
+      />
     </div>
   )
 }

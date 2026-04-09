@@ -1,40 +1,40 @@
-"use client";
-
 import * as React from "react";
 
-type DivProps = React.HTMLAttributes<HTMLDivElement>;
-
-/**
- * Compatibility exports for components expecting `CardContainer`, `CardBody`, `CardItem`.
- * These are lightweight wrappers to avoid build-time import errors.
- */
-export const CardContainer = React.forwardRef<HTMLDivElement, DivProps>(
-  ({ className, ...props }, ref) => {
-    return <div ref={ref} className={className} {...props} />;
-  }
-);
-CardContainer.displayName = "CardContainer";
-
-export const CardBody = React.forwardRef<HTMLDivElement, DivProps>(
-  ({ className, ...props }, ref) => {
-    return <div ref={ref} className={className} {...props} />;
-  }
-);
-CardBody.displayName = "CardBody";
-
-export type CardItemProps = DivProps & {
-  /**
-   * Some implementations use `translateZ` to control 3D depth.
-   * We accept it for type-compatibility even if not used.
-   */
+export type CardContainerProps = React.HTMLAttributes<HTMLDivElement>;
+export type CardBodyProps = React.HTMLAttributes<HTMLDivElement>;
+export type CardItemProps = React.HTMLAttributes<HTMLDivElement> & {
   translateZ?: number | string;
-  as?: React.ElementType;
+  rotateX?: number | string;
+  rotateY?: number | string;
 };
 
-export const CardItem = React.forwardRef<HTMLElement, CardItemProps>(
-  ({ as: Comp = "div", className, translateZ: _translateZ, ...props }, ref) => {
-    // We intentionally ignore translateZ here; this is a compatibility shim.
-    return <Comp ref={ref as any} className={className} {...props} />;
+/**
+ * Minimal, build-safe 3D card primitives.
+ * These components intentionally keep behavior simple to avoid runtime deps.
+ */
+export function CardContainer({ className, ...props }: CardContainerProps) {
+  return <div className={className} {...props} />;
+}
+
+export function CardBody({ className, ...props }: CardBodyProps) {
+  return <div className={className} {...props} />;
+}
+
+export function CardItem({ className, translateZ, rotateX, rotateY, style, ...props }: CardItemProps) {
+  // Preserve any provided style; ignore 3D props if not used by caller.
+  const mergedStyle: React.CSSProperties = {
+    ...style,
+  };
+
+  // If caller passes translateZ/rotateX/rotateY, apply a basic transform.
+  const tz = translateZ ?? 0;
+  const rx = rotateX ?? 0;
+  const ry = rotateY ?? 0;
+
+  if (translateZ !== undefined || rotateX !== undefined || rotateY !== undefined) {
+    mergedStyle.transform = `${style?.transform ?? ""} translateZ(${typeof tz === "number" ? `${tz}px` : tz}) rotateX(${typeof rx === "number" ? `${rx}deg` : rx}) rotateY(${typeof ry === "number" ? `${ry}deg` : ry})`.trim();
+    mergedStyle.transformStyle = "preserve-3d";
   }
-);
-CardItem.displayName = "CardItem";
+
+  return <div className={className} style={mergedStyle} {...props} />;
+}

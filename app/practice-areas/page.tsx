@@ -1,305 +1,259 @@
-'use client'
-
-import { motion } from 'framer-motion'
-
+import { FeaturesGrid } from '@/components/blocks/FeaturesGrid'
 import { FAQAccordion } from '@/components/blocks/FAQAccordion'
-import { CTAVortex } from '@/components/blocks/CTAVortex'
-
-import { StickyScroll as StickyScrollReveal } from '@/components/ui/effects/StickyScrollReveal'
+import { CTABanner } from '@/components/blocks/CTABanner'
 import { TracingBeam } from '@/components/ui/effects/TracingBeam'
+import { StickyScroll as StickyScrollReveal } from '@/components/ui/effects/StickyScrollReveal'
 import { ParallaxScroll } from '@/components/ui/effects/ParallaxScroll'
 
 export default function PracticeAreasPage() {
   return (
     <div className="bg-background text-foreground">
-      {/* Hero (custom, since Hero components are home-only per blueprint assignment) */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
-          >
-            <div className="lg:col-span-7">
-              <div className="text-sm text-muted-foreground">Practice Areas</div>
-              <h1 className="mt-3 font-[family-name:var(--font-heading)] text-5xl md:text-7xl leading-tight">
-                Corporate law, built for complexity.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-sm text-muted-foreground">Practice Areas</p>
+              <h1 className="mt-2 font-[family-name:var(--font-heading)] text-4xl md:text-5xl">
+                Corporate law with a litigation-ready edge.
               </h1>
-              <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl">
-                A focused practice for leaders navigating transactions, distress, investigations, and securities
-                disputes—supported by disciplined process and trial-ready strategy. We partner with executives and
-                in-house counsel to move quickly while keeping a defensible record.
+              <p className="mt-4 text-muted-foreground">
+                Our practice areas are built for the realities of modern corporate risk: compressed timelines, regulatory
+                scrutiny, and reputational exposure. We help decision-makers move quickly while preserving leverage and
+                defensibility—because the record often becomes the battleground.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold"
-                >
-                  Schedule a Call
-                </a>
-                <a
-                  href="/pricing"
-                  className="inline-flex items-center justify-center rounded-md border border-border bg-card text-foreground px-6 py-3 text-sm font-semibold hover:shadow-md transition-shadow"
-                >
-                  View Pricing
-                </a>
+
+              <div className="mt-8 bg-card border border-border rounded-lg shadow-xl p-6">
+                <p className="font-[family-name:var(--font-heading)] text-lg">How we engage</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  We can serve as lead counsel or as a focused workstream team (diligence, motion practice, investigation
+                  response). In either case, partners remain directly involved.
+                </p>
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="bg-card rounded-3xl shadow-md border border-border overflow-hidden">
-                <img
-                  src="/images/office.png"
-                  alt="Typography-forward editorial rule lines in navy and gold"
-                  className="w-full h-80 object-cover"
-                />
-              </div>
+            <div className="bg-card border border-border rounded-lg shadow-xl overflow-hidden">
+              <img
+                src="/images/hero.png"
+                alt="Legal documents and negotiation materials on a conference table"
+                className="w-full h-80 md:h-[28rem] object-cover"
+              />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Core offerings (TracingBeam + anchors) */}
-      <section className="py-20 md:py-32 bg-muted">
+      <section className="py-16 md:py-28 bg-muted">
         <div className="max-w-7xl mx-auto px-6">
-          <TracingBeam>
-            <div className="space-y-14">
-              <div>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl">Core offerings</h2>
-                <p className="mt-4 text-muted-foreground max-w-3xl leading-relaxed">
-                  Each practice area follows a proven workflow: assess → plan → execute → document. The goal is simple:
-                  help leadership make defensible decisions quickly, with clear risk allocation and communication.
-                </p>
-              </div>
-
-              {[
-                {
-                  id: 'ma',
-                  title: 'Mergers & Acquisitions',
-                  desc: 'From LOI to closing, we protect value through diligence, negotiation, and precise documentation.',
-                  bullets: [
-                    'Buy-side and sell-side representation',
-                    'Diligence planning and risk triage',
-                    'Negotiation of reps, warranties, indemnities',
-                    'Closing mechanics and post-close integration guidance',
-                  ],
-                  image: '/images/meeting.png',
-                },
-                {
-                  id: 'restructuring',
-                  title: 'Corporate Restructuring',
-                  desc: 'Stabilize the enterprise and align stakeholders—without losing control of the narrative.',
-                  bullets: [
-                    'Distressed M&A and asset sales',
-                    'Creditor negotiations and forbearance',
-                    'Governance and fiduciary guidance',
-                    'Operational turnaround legal support',
-                  ],
-                  image: '/images/handshake.png',
-                },
-                {
-                  id: 'securities',
-                  title: 'Securities Litigation',
-                  desc: 'Litigation defense and regulator-facing strategy grounded in facts, timelines, and documentation hygiene.',
-                  bullets: [
-                    'Securities class action defense support',
-                    'Internal investigations and response plans',
-                    'Disclosure controls and remediation guidance',
-                    'Coordination with PR and crisis teams',
-                  ],
-                  image: '/images/team-1.png',
-                },
-                {
-                  id: 'white-collar',
-                  title: 'White-Collar Defense',
-                  desc: 'Discreet, rapid-response counsel for executives and companies facing investigations or allegations.',
-                  bullets: [
-                    'Government investigations strategy',
-                    'Witness preparation and interview readiness',
-                    'Document preservation and collection guidance',
-                    'Parallel civil/criminal risk coordination',
-                  ],
-                  image: '/images/team-2.png',
-                },
-              ].map((area, idx) => (
-                <motion.div
-                  key={area.id}
-                  id={area.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.6 }}
-                  className={`grid grid-cols-1 lg:grid-cols-12 gap-10 items-center ${
-                    idx % 2 === 0 ? '' : 'lg:[&>div:first-child]:order-2'
-                  }`}
-                >
-                  <div className="lg:col-span-6">
-                    <h3 className="font-[family-name:var(--font-heading)] text-2xl md:text-3xl">{area.title}</h3>
-                    <p className="mt-4 text-muted-foreground leading-relaxed">{area.desc}</p>
-                    <ul className="mt-6 space-y-2 text-muted-foreground">
-                      {area.bullets.map((b) => (
-                        <li key={b} className="flex gap-3">
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
-                          <span>{b}</span>
-                        </li>
-                      ))}
+          <StickyScrollReveal
+            content={[
+              {
+                title: 'Mergers & Acquisitions',
+                description:
+                  'We advise across the deal lifecycle—from diligence design to negotiation strategy and post-close risk containment. Our drafting anticipates disputes and regulatory questions, not just closing mechanics.',
+                content: (
+                  <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">Selected capabilities</p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      <li>Buy-side and sell-side representation</li>
+                      <li>Diligence planning and issue triage</li>
+                      <li>Reps & warranties and indemnity strategy</li>
+                      <li>Management rollovers and equity incentives</li>
                     </ul>
                   </div>
-
-                  <div className="lg:col-span-6">
-                    <div className="bg-card rounded-3xl shadow-md border border-border overflow-hidden">
-                      <img src={area.image} alt={`${area.title} abstract illustration`} className="w-full h-80 object-cover" />
-                    </div>
+                ),
+              },
+              {
+                title: 'Corporate Restructuring',
+                description:
+                  'We help leadership teams preserve value, stabilize stakeholders, and execute restructuring moves with clarity. Documentation and governance are treated as risk controls—not afterthoughts.',
+                content: (
+                  <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">Selected capabilities</p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      <li>Forbearance and amendment negotiations</li>
+                      <li>Governance and fiduciary guidance</li>
+                      <li>Distressed transactions and asset sales</li>
+                      <li>Dispute posture and documentation</li>
+                    </ul>
                   </div>
-                </motion.div>
-              ))}
+                ),
+              },
+              {
+                title: 'Securities Litigation',
+                description:
+                  'We defend companies and executives in securities claims with early case assessment and precision motion practice. The goal is leverage early and controlled discovery later.',
+                content: (
+                  <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">Selected capabilities</p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      <li>Class actions and derivative claims</li>
+                      <li>Regulatory inquiries and responses</li>
+                      <li>Discovery strategy and eDiscovery coordination</li>
+                      <li>Settlement strategy and risk modeling</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                title: 'White-Collar Defense',
+                description:
+                  'Crisis counsel for investigations, subpoenas, and parallel proceedings—built around speed, privilege, and narrative control. We help protect operations while the matter is managed.',
+                content: (
+                  <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">Selected capabilities</p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      <li>Internal investigations and reporting</li>
+                      <li>Witness preparation and interview defense</li>
+                      <li>Agency negotiations and resolution strategy</li>
+                      <li>Compliance remediation planning</li>
+                    </ul>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      <section className="py-16 md:py-28">
+        <div className="max-w-7xl mx-auto px-6">
+          <TracingBeam>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+              <div>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl">
+                  Our engagement process: structured and fast.
+                </h2>
+                <p className="mt-4 text-muted-foreground">
+                  A conservative, repeatable approach designed to reduce uncertainty. We align early on decision-makers,
+                  deadlines, and risk posture—then execute with cadence and documentation discipline.
+                </p>
+
+                <div className="mt-8 bg-card border border-border rounded-lg shadow-xl p-6">
+                  <p className="font-[family-name:var(--font-heading)] text-lg">Why this matters</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    In high-stakes matters, the fastest path is often the most structured one. Clear phases reduce
+                    rework, prevent misalignment, and keep stakeholders confident under pressure.
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  {
+                    title: '1) Intake & triage',
+                    desc: 'We identify deadlines, decision-makers, and immediate risk controls within the first call.',
+                  },
+                  {
+                    title: '2) Strategy memo',
+                    desc: 'A concise plan outlining options, leverage points, and recommended next actions.',
+                  },
+                  {
+                    title: '3) Execution sprint',
+                    desc: 'Deal docs, filings, negotiations, or defense actions—run with partner oversight.',
+                  },
+                  {
+                    title: '4) Closeout & risk hardening',
+                    desc: 'Post-close obligations, governance updates, and documentation for future defensibility.',
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="bg-card border border-border rounded-lg shadow-xl p-6">
+                    <p className="font-[family-name:var(--font-heading)] text-lg">{item.title}</p>
+                    <p className="mt-2 text-sm text-muted-foreground">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </TracingBeam>
         </div>
       </section>
 
-      {/* How we work (StickyScrollReveal) */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28 bg-muted">
         <div className="max-w-7xl mx-auto px-6">
-          <StickyScrollReveal
-            content={[
-              {
-                title: 'Rapid intake',
-                description:
-                  'Define objectives, constraints, and timelines; establish confidentiality and communication cadence suitable for executives and boards.',
-              },
-              {
-                title: 'Risk map',
-                description:
-                  'Identify exposures, leverage points, and decision gates; align legal posture with business priorities and stakeholder realities.',
-              },
-              {
-                title: 'Execution plan',
-                description:
-                  'Assign workstreams, draft strategy, and build documentation that supports negotiations, disclosures, and litigation posture.',
-              },
-              {
-                title: 'Outcome management',
-                description:
-                  'Negotiate, litigate, or resolve—then memorialize and operationalize next steps to reduce recurrence risk.',
-              },
-            ]}
-          />
-        </div>
-      </section>
-
-      {/* Representative outcomes (ParallaxScroll) */}
-      <section className="py-20 md:py-32 bg-muted">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"
-          >
-            <div className="lg:col-span-5">
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl">Representative outcomes</h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Select examples of how disciplined strategy can change leverage and resolution posture. Details are
-                generalized to respect confidentiality.
-              </p>
-
-              <div className="mt-8 bg-card rounded-3xl shadow-md border border-border p-6">
-                <div className="space-y-5">
-                  {[
-                    {
-                      title: 'Cross-border acquisition closing',
-                      desc: 'Guided diligence and negotiated risk allocation to support an on-time close under regulatory pressure.',
-                      metric: 'Closed within 45 days',
-                    },
-                    {
-                      title: 'Restructuring stabilization',
-                      desc: 'Negotiated stakeholder alignment and documentation for a turnaround path while preserving governance control.',
-                      metric: 'Avoided insolvency filing',
-                    },
-                    {
-                      title: 'Securities dispute resolution',
-                      desc: 'Built an early factual record and motion strategy that accelerated settlement leverage.',
-                      metric: 'Resolved pre-discovery',
-                    },
-                    {
-                      title: 'White-collar response',
-                      desc: 'Rapid-response planning, preservation, and interview prep to reduce operational disruption.',
-                      metric: 'Business continuity maintained',
-                    },
-                  ].map((item) => (
-                    <div key={item.title} className="border-b border-border pb-5 last:border-b-0 last:pb-0">
-                      <div className="flex items-center justify-between gap-4">
-                        <div className="font-[family-name:var(--font-heading)] text-lg">{item.title}</div>
-                        <div className="text-sm text-primary">{item.metric}</div>
-                      </div>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <ParallaxScroll
-                images={[
-                  '/images/team-3.png',
-                  '/images/office.png',
-                  '/images/meeting.png',
-                  '/images/handshake.png',
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <FeaturesGrid
+                badge="Industries"
+                headline="Built for regulated, operationally complex businesses."
+                subheadline="We work across sectors where governance, disclosure, and stakeholder dynamics shape outcomes."
+                features={[
+                  {
+                    title: 'Manufacturing & industrials',
+                    description: 'Operational risk and supply chain exposure addressed alongside deal mechanics.',
+                  },
+                  {
+                    title: 'Healthcare services',
+                    description: 'Governance and reputational risk considered in transaction and dispute posture.',
+                  },
+                  {
+                    title: 'Fintech & financial services',
+                    description: 'Regulatory scrutiny and investigation readiness integrated into strategy.',
+                  },
+                  {
+                    title: 'Logistics & services',
+                    description: 'Contract, creditor, and operational constraints managed with timeline discipline.',
+                  },
                 ]}
               />
             </div>
-          </motion.div>
+            <div className="bg-card border border-border rounded-lg shadow-xl p-6">
+              <p className="font-[family-name:var(--font-heading)] text-xl">A discreet working style</p>
+              <p className="mt-3 text-muted-foreground">
+                For boards and executive teams, we prioritize confidentiality, practical options, and written guidance
+                that can be shared internally. We can coordinate with in-house counsel and existing firms to minimize
+                disruption and keep communication controlled.
+              </p>
+              <div className="mt-6">
+                <ParallaxScroll
+                  images={[
+                    '/images/office.png',
+                    '/images/meeting.png',
+                    '/images/handshake.png',
+                    '/images/team-1.png',
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <FAQAccordion
-            headline="Common questions"
-            subheadline="Clear answers for executives and in-house teams."
+            headline="Common questions."
+            subheadline="Clear answers to help you move forward with confidence."
             items={[
               {
-                question: 'Do you work with in-house counsel?',
+                question: 'Do you work with in-house counsel and existing firms?',
                 answer:
-                  'Yes. We frequently partner with internal legal teams, providing targeted support where stakes, speed, or specialized litigation posture requires it. We can integrate into your workflow and reporting cadence.',
+                  'Yes. We frequently serve as lead counsel or as a focused team for a specific workstream (e.g., diligence, motion practice, investigation response). We align on roles early to keep communication clean and avoid duplicative effort.',
               },
               {
-                question: 'How quickly can you engage?',
+                question: 'How quickly can you engage on urgent matters?',
                 answer:
-                  'For time-sensitive matters, we can typically schedule an initial call within 24 hours and provide an engagement letter shortly thereafter, subject to a conflict check.',
+                  'For time-sensitive matters, we can typically schedule an initial consultation within 24 hours and begin work immediately after conflict checks and engagement confirmation. If there is a hard deadline, we will map a 48-hour action plan.',
               },
               {
-                question: 'What information should we prepare for the first call?',
+                question: 'What industries do you serve?',
                 answer:
-                  'A brief timeline, key documents (if available), stakeholders involved, and your primary objective. We’ll guide you on what to share safely and what to reserve for after conflicts and scope are confirmed.',
+                  'We work across industries including manufacturing, healthcare services, fintech, professional services, and logistics—where governance and risk posture matter. We also coordinate with subject-matter specialists where needed.',
               },
               {
-                question: 'Do you offer fixed fees?',
+                question: 'Do you offer fixed-fee options?',
                 answer:
-                  'For defined scopes (for example, discrete diligence packages or policy reviews), we can propose fixed or phased fee structures. Litigation is typically hourly with budget checkpoints by phase.',
+                  'For defined scopes (e.g., discrete diligence packages, investigation response phases), we can propose fixed fees or capped arrangements. For evolving matters, we use budget checkpoints and written change triggers.',
               },
             ]}
           />
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <CTAVortex
-            headline="Need counsel that’s decisive under pressure?"
-            description="We’ll help you move from uncertainty to a clear plan—with documentation that holds up."
-            ctaLabel="Request a Consultation"
-            ctaHref="/contact"
-          />
-        </div>
-      </section>
+      <CTABanner
+        headline="If the stakes are high, the plan must be clear."
+        description="Tell us what you’re facing. We’ll outline options and next steps."
+        ctaLabel="Request Consultation"
+        ctaHref="/contact"
+      />
     </div>
   )
 }
